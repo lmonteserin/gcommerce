@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>G-COMMERCE</title>
+	<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+	
+	<script type="text/javascript" src="cordova.js"></script>
+	<!--<script type="text/javascript" src="js/paypal-mobile-js-helper.js"></script>
+	<script src="js/paypal.js"></script>		--->
+	
+	
+	
+		
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />	
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>  
+	<script type="text/javascript" src="js/fastclick.js"></script>
+	
+    <script>
+	 function onLoad(){ document.addEventListener("deviceready",onDeviceReady, true);}
+
+	 function onDeviceReady(){ 
+    	new FastClick(document.body);}
+		//alert("onDeviceReady index");
+	 
+	function valida()
+	{  	
+		  var encontrado = 0;
+		  var datosUsuario = $("#usuario").val()
+		  var datosPassword = $("#pass").val()
+		  encontrado = 1;
+		 // window.localStorage.setItem("usuario", datosUsuario);		    							
+		  location.href="pMenuPrincipal.html";
+				
+				
+			<!-- 	if (encontrado == 0)
+				 // {
+					/// Temporal para las pruebas
+					//location.href="pantalla_menuPrincipal.html";
+					
+					<!-- navigator.notification.alert(
+							<!-- 'Datos incorrectos',     // mensaje (message) -->
+							<!-- alertDismissed,         // función 'callback' (alertCallback) -->
+							<!-- 'Error de Acceso:',            // titulo (title) -->
+							<!-- 'Cerrar'                // nombre del botón (buttonName) -->
+							<!-- ); -->
+				 -->
+				  <!-- } --> -->
+	}
+	
+	function registrar()
+	{  	
+		 
+	}
+
+    </script>
+  </head>
+
+  <body onload="onLoad();">
+ 
+    <div data-role="page" id="pagInicio" >
+	
+        <div data-role="header" data-position="fixed">
+            <h1> Gcommerce </h1>
+        </div>
+
+		<div data-role="content" data-theme="c" style="height:500px"  >	
+			<!-- <div style="width:100%; text-align:center"><img style="background-color: rgba(0, 0, 255, 0)" src="img/logoAyuntTransp.png"/></div>
+		     -->
+			<form id="formulario" style="margin-top:50px">
+					<label> Usuario </label>
+					<input type="text" id="usuario"/> 
+					<label> Password </label>
+					<input type="password" id="pass" name="pass" /> 
+					<input type="button" value="Login" id="botonLogin"  onClick="valida()" />      
+					<input type="button" value="Registrarse" id="botonRegistro"  onClick="registrar()" />      
+			</form>		
+		</div>
+
+
+<!-- 		<div data-role="footer" data-theme="c" data-position="fixed"> 
+			<h4><img data-inline="true" style="align:left; background-color: rgba(0, 0, 255, 0); height:35px; width:40px;" src="img/logoAux.png"/> <span style="font-size:8px"><label id="version">VERSIÓN 1.0</label></span>    </h4>
+		</div>  -->
+	</div>
+	
+	<!--  <a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>
+		<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+			<form>
+				<div style="padding:10px 20px;">
+					<h3>Please sign in</h3>
+					<label for="un" class="ui-hidden-accessible">Username:</label>
+					<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+					<label for="pw" class="ui-hidden-accessible">Password:</label>
+					<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+					<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>
+				</div>
+			</form>
+		</div>
+
+-->
+	  
+ </body>
+</html>	
