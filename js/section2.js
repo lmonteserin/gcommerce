@@ -19,8 +19,7 @@ Section2.prototype.init = function()
 	this.parent.init.call(this);
 	alert('Section hija 2' +paypalApp.length);
 	
-	
-	paypalApp.initialize();		
+		
 	this.loadInfo();
 
 	this.renderPage();  	

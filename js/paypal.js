@@ -22,13 +22,14 @@
 
 var paypalApp =
  {
+
 	//PAYPAL
     //LIVE: "PayPalEnvironmentProduction"
     //SANDBOX: "PayPalEnvironmentSandbox"
     PAYPAL_MODE: "PayPalEnvironmentSandbox",
     
     PRODUCTION_CLIENT_ID:"-",
-    //SANDBOX_CLIENT_ID:"AYwMkBxe2-MtuhmiB_9DQbATQXxuszPfBC7bl9VZ2Z69Q_B-4E24bLKcaL_54tBxWfCEi7CUTYQf3jZY",
+    //SANDBOX_CLIENT_ID_alberto:"AYwMkBxe2-MtuhmiB_9DQbATQXxuszPfBC7bl9VZ2Z69Q_B-4E24bLKcaL_54tBxWfCEi7CUTYQf3jZY",
 	SANDBOX_CLIENT_ID:"AYbex18kzX6uV6hsC_kZENMnpbeY2SPR7SrRSXWYibyasjbqYpgFKboxsiCMDs7VHaSighKJ1Rtm-oN_"
 
     PAYPAL_MERCHANT_NAME:"GCOMMERCE APP",
@@ -44,7 +45,7 @@ var paypalApp =
    // paypalApplication Constructor
    initialize: function() 
    {
-	   //alert("initialize paypal!");
+	   alert("initialize paypal!");
         var clientIDs = {
        "PayPalEnvironmentProduction": paypalApp.PRODUCTION_CLIENT_ID,
        "PayPalEnvironmentSandbox": paypalApp.SANDBOX_CLIENT_ID,
