@@ -1,67 +1,229 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>G-COMMERCEOOO</title>
-	<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
-	
-	<script type="text/javascript" src="cordova.js"></script>
-	<!--<script type="text/javascript" src="js/paypal-mobile-js-helper.js"></script>
-	<script src="js/paypal.js"></script>		--->
-	
-	
-	
-		
+    <title>G-COMMERCE</title>
+	<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
 	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />	
+	<link rel="stylesheet" href="css/popup.css" />		
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>  
 	<script type="text/javascript" src="js/fastclick.js"></script>
-	
+		
     <script>
 	 function onLoad(){ document.addEventListener("deviceready",onDeviceReady, true);}
 
 	 function onDeviceReady(){ 
-    	new FastClick(document.body);}
-		//alert("onDeviceReady index");
-	 
-	function valida()
-	{  	
-		  var encontrado = 0;
-		  var datosUsuario = $("#usuario").val()
-		  var datosPassword = $("#pass").val()
-		  encontrado = 1;
-		 // window.localStorage.setItem("usuario", datosUsuario);		    							
-		  location.href="pMenuPrincipal.html";
-				
-				
-			<!-- 	if (encontrado == 0)
-				 // {
-					/// Temporal para las pruebas
-					//location.href="pantalla_menuPrincipal.html";
-					
-					<!-- navigator.notification.alert(
-							<!-- 'Datos incorrectos',     // mensaje (message) -->
-							<!-- alertDismissed,         // función 'callback' (alertCallback) -->
-							<!-- 'Error de Acceso:',            // titulo (title) -->
-							<!-- 'Cerrar'                // nombre del botón (buttonName) -->
-							<!-- ); -->
-				 -->
-				  <!-- } --> -->
-	}
-	
-	function registrar()
-	{  	
-		 
-	}
+    	new FastClick(document.body);
+		window.localStorage.setItem("idComercio", 5);
+        //var keyname = window.localStorage.key(i);
+        // keyname is now equal to "key"
+        //var value = window.localStorage.getItem("key");
+        // value is now equal to "value"
+        //window.localStorage.removeItem("key");
+        //window.localStorage.setItem("key2", "value2");
+        //window.localStorage.clear();
+        // localStorage is now empty
+		
+		
+		}
+	 	
+	$(function() {
+			var idCom_ = 5;
+			var emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+			nombreUsuario,
+			pass_,
+			nombreApellidos,
+			email_,
+			telef,
+			dire,
+			pobla,
+			cod_postal,
+			prov;
+			
 
+			function checkLength( o, n, min, max ) {	
+				if(o) {
+					if ( o.length > max || o.length < min ) {
+						alert( "La longitud de " + n + " debe estar entre " +min + " y " + max + "." );		
+						return false;
+					} else {
+						return true;
+					}
+				}
+				else {
+					alert( "La longitud de " + n + " debe estar entre " +min + " y " + max + "." );		
+					return false;
+				}				
+			}
+
+			function checkRegexp( o, regexp, n ) {
+				if (o) {
+					if ( !( regexp.test( o ) ) ) {
+						alert(n);
+						return false;
+					} else {
+						return true;
+					}
+				}
+				else {
+					return false;
+				}			 
+			}
+			
+			
+			function esValido() {
+			  var valid = true;			
+
+			  nombreUsuario = $("#nomUsuario").val();
+			  pass_ = $("#pwd").val();			 
+			  nombreApellidos = $("#nomApel").val();
+			  email_ = $("#email").val(); 
+			  telef = $("#tfno").val();
+			  dire = $("#direcc").val();
+			  pobla = $("#poblacion").val();
+			  cod_postal = $("#codPostal").val();
+			  prov = $("#provincia").val();
+
+			  if (! checkLength( nombreUsuario, "Nombre de Usuario", 3, 100 )) {
+				return false;
+			  }
+
+			  if (! checkLength( pass_, "Password", 5, 100 )) {
+				return false;
+			  }
+			  		
+			  /*if (! checkLength( nombreApellidos, "Nombre y Apellidos", 3, 500 )) {
+				return false;
+			  }
+					
+			  if (! checkLength( email_, "Email", 6, 255 )) {
+				return false;			  
+			  }
+			  
+			  if (! checkLength( telef, "Teléfono", 9, 13 )) {
+				return false;			  
+			  }
+
+			  if (! checkLength( dire, "Dirección", 5, 100 )) {
+				return false;
+			  }
+			  
+			  if (! checkLength( pobla, "Población", 5, 100 )) {
+				return false;
+			  }
+			  
+			  if (! checkLength( cod_postal, "Código Postal", 5, 5 )) {
+				return false;
+			  }
+			  
+			  if (! checkLength( prov, "Provincia", 5, 100 )) {
+				return false;
+			  }
+			  if (! checkRegexp( email_, emailRegex, "Email incorrecto. Debe seguir un formato del tipo aaaa@bbbb.com" )) {
+				return false;
+			  }
+			*/
+			  return valid;
+			}
+			
+		$(document).on('click', '#btnGuardarCuenta', function () {		
+			valid = esValido()
+			if (valid){	
+		
+			$.ajax({ 
+					type : 'POST', 
+					url : 'http://1-dot-webgcommerceue.appspot.com/loginApp', // Servlet URL 
+					data:{ 
+						nuevo:"true",
+						username: nombreUsuario, 
+						password: pass_, 
+						nomApellidos: nombreApellidos, 
+						email: email_, 
+						telefono: telef, 
+						direccion: dire, 
+						poblacion: pobla, 
+						cp: cod_postal, 
+						provincia: prov, 
+						idComercio: idCom_,
+					}, 		
+					dataType: "json",				
+					success : function(data) { 						
+							/* HELP: http://stackoverflow.com/questions/12600827/jquery-ajax-call-to-servlet-get-data-as-json**/
+							$("#usuario").val(data.userName);
+							$("#pass").val(data.password);					
+						
+							$('#popupLogin').popup('close');	
+					},				
+					error:function (xhr, ajaxOptions, thrownError) {
+						alert("Error llamada Servidor"+xhr);					
+					}
+				});			
+				
+				
+			}
+			/*else{
+				alert("NO VALIDA POPUP");
+			};*/
+		});
+	
+		$(document).on('click', '#botonLogin', function () {		
+			var datosUsuario = $("#usuario").val();
+			var datosPassword = $("#pass").val();
+			// window.localStorage.setItem("usuario", datosUsuario);		    							
+			location.href="pMenuPrincipal.html";
+			/*
+			$.ajax({ 
+				type : 'POST', 
+				url : 'http://1-dot-webgcommerceue.appspot.com/loginApp', // Servlet URL 
+				data:{ 
+					username: datosUsuario, 
+					password: datosPassword, 
+					idComercio: idCom_,
+				}, 		
+				dataType: "json",				
+				success : function(data) { 	
+					if (data.login == "correcto"){
+						//escribir al dispositivo los datos que me vienen
+					
+						window.localStorage.setItem("idUsuario",data.idUsuario);
+						window.localStorage.setItem("userName",data.userName);
+						window.localStorage.setItem("nomApellidos",data.nomApellidos);
+						window.localStorage.setItem("nombreComercio",data.nombreComercio);
+						
+						location.href="pMenuPrincipal.html";
+						//location.href="opciones/inicio.html";
+					}
+					else{
+						//alert("contraseña incorrecta");		
+						$("#labelError").text("Usuario o contraseña incorrectos");						
+					}				
+				},				
+				error:function (xhr, ajaxOptions, thrownError) {
+					 alert("Error en llamada a Servidor");					 					 
+				}
+			});	*/			
+		});
+			
+	});
+	 	
+	$(document).on('click', '#btnNuevaCuenta', function () {
+		$('#popupLogin').popup('open');	
+	});
+
+	$('#btnNuevaCuenta').buttonMarkup({ inline: true });
+		
     </script>
+	
   </head>
 
+  
+  
   <body onload="onLoad();">
  
     <div data-role="page" id="pagInicio" >
 	
         <div data-role="header" data-position="fixed">
-            <h1> Gcommerce </h1>
+            <h1> GCOMMERCE APP </h1>
         </div>
 
 		<div data-role="content" data-theme="c" style="height:500px"  >	
@@ -72,32 +234,54 @@
 					<input type="text" id="usuario"/> 
 					<label> Password </label>
 					<input type="password" id="pass" name="pass" /> 
-					<input type="button" value="Login" id="botonLogin"  onClick="valida()" />      
-					<input type="button" value="Registrarse" id="botonRegistro"  onClick="registrar()" />      
+					
+					<label id="labelError" class="labelError"> </label>
+					<!-- <input type="button" value="LOGIN" id="botonLogin"  />       -->
 			</form>		
+			<button id="botonLogin" class="ui-btn ui-shadow ui-corner-all">LOGIN</button> 
+			</br></br>
+			<button id="btnNuevaCuenta" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-user custom-btn" 
+			>CREAR UNA CUENTA</button>
 		</div>
 
 
-<!-- 		<div data-role="footer" data-theme="c" data-position="fixed"> 
-			<h4><img data-inline="true" style="align:left; background-color: rgba(0, 0, 255, 0); height:35px; width:40px;" src="img/logoAux.png"/> <span style="font-size:8px"><label id="version">VERSIÓN 1.0</label></span>    </h4>
-		</div>  -->
+	  <div data-role="popup" id="popupLogin" data-theme="a"  data-overlay-theme="a" class="ui-corner-all">
+			<div data-role="content" style="padding:10px 20px;">		
+				<form id="crearCuenta" >
+
+					<h3>Introduzca sus datos</h3>
+					<label> Nombre de Usuario </label>
+					<input type="text" id="nomUsuario"/> 
+					<label> Password </label>
+					<input type="password" id="pwd" name="pwd" /> 
+					<label> Nombre y Apellidos </label>
+					<input type="text" id="nomApel"/> 
+					<label> Email </label>
+					<input type="text" id="email"/> 
+					<label> Teléfono </label>
+					<input type="number" id="tfno"/> 
+					
+					<label> Dirección </label>
+					<input type="text" id="direcc" class="textoDerecha"/> 
+					<label> Población </label>
+					<input type="text" id="poblacion" class="textoDerecha"/> 
+					<label> CP </label>
+					<input type="number" id="codPostal" class="textoDerecha"/> 
+					<label> Provincia </label>
+					<input type="text" id="provincia" class="textoDerecha"/> 
+					
+			
+				</form>
+				</br>
+				<button id="btnGuardarCuenta" class="ui-btn ui-btn-b "  
+				>GUARDAR</button>
+			</div>
+		
+		</div>
+
 	</div>
 	
-	<!--  <a href="#popupLogin" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop">Sign in</a>
-		<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
-			<form>
-				<div style="padding:10px 20px;">
-					<h3>Please sign in</h3>
-					<label for="un" class="ui-hidden-accessible">Username:</label>
-					<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
-					<label for="pw" class="ui-hidden-accessible">Password:</label>
-					<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
-					<button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Sign in</button>
-				</div>
-			</form>
-		</div>
-
--->
+	
 	  
  </body>
 </html>	

@@ -1,0 +1,81 @@
+ .divMiDesc {
+	width:100%;
+	height:40px;	
+    margin:0px auto;
+	/* background-color:blue; */
+}
+
+.miDescripcion {
+	font-size:10pt;
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+	color: #f2f3f4;
+	text-align:left;	
+	margin-left:5px !important;
+}
+
+.milinea {
+    height: 1px;
+    margin: 5px 5px 1px 5px;
+    background-color: #EEF5F7;
+	border:0;
+	border-radius:10px;	
+}
+
+.divMiImporte {
+	width:100%;
+	height:40px;		
+ /*    margin:0px auto !important; */
+    
+	font-size:12pt; 
+	font-weight: bold !important;
+	color: pink !important;
+	text-align:left;
+	margin-left:5px; 
+	
+/* 	background-color:yellow;  */
+	
+}
+
+/* .miImporte {
+	
+} */
+
+.caja{
+	color: white;
+	float:left; 
+	width:30%;
+	height:400px;
+	text-align:center;
+	border:3px solid #EEF5F7;
+	border-radius:10px;
+	margin-left: 2%;
+	margin-bottom: 10px; 
+}
+
+.divImagen {
+	width:100%;
+	height:250px;
+	line-height:250px;
+    margin:0px auto;
+    text-align:center;  
+  /* 	background-color:green; */
+}
+.imagen{
+   /*  display: block; */
+   /*  margin-left: auto;
+    margin-right: auto; */
+	vertical-align:middle;
+}
+
+.divButton {
+	width:100%;
+	height:70px;
+	text-align:center;
+	line-height:50px;
+    margin:0px auto;
+    text-align:center;    	
+}
+
+.miBoton {
+	color:green;
+}

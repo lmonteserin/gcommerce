@@ -1,5 +1,9 @@
+"use strict";
+
 // Declaraci—n de variables globales
-var myScroll, myScrollMenu, cuerpo, menuprincipal, wrapper, estado;
+var myScroll, myScrollMenu, cuerpo, menuprincipal, wrapper, estado, idComercio, idUsuario, userName, nombreUsuario, nombreComercio;
+var cestaCompra;
+var currentSection, currentSectionID;
 
 // Guardamos en variables elementos para poder rescatarlos despuŽs sin tener que volver a buscarlos
 cuerpo = document.getElementById("cuerpo"),
@@ -29,18 +33,18 @@ var app = {
 		// Leemos por ajax el archivos inicio.html
 		xhReq.open("GET", "opciones/inicio.html", false);
 		xhReq.send(null);
-		document.getElementById("contenidoCuerpo").innerHTML=xhReq.responseText;
+		document.getElementById("contenidoCuerpo").innerHTML=xhReq.responseText; 
+		
+		//$("#contenidoCuerpo").load ('opciones/inicio.html');
 
 		// Leemos por ajax el archivos menu.html de la carpeta opciones
 		xhReq.open("GET", "opciones/menu.html", false);
 		xhReq.send(null);
 		document.getElementById("contenidoMenu").innerHTML=xhReq.responseText;
 		
-		// Creamos los 2 scroll mediante el plugin iscroll, uno para el menœ principal y otro para el cuerpo
-		myScroll = new iScroll('wrapper', { hideScrollbar: true });
-		myScrollMenu = new iScroll('wrapperMenu', { hideScrollbar: true });
-	
-        this.bindEvents();
+		// creamos la cesta de la compra vacía		
+		cestaCompra = new Array();
+        this.bindEvents();		
     },
 
     bindEvents: function() {
@@ -48,16 +52,29 @@ var app = {
     },
 
     onDeviceReady: function() {
-    	//alert("onDeviceReady menu dentro del js: "+ paypalApp);
+    	// Ejecutamos la funci—n FastClick, que es la que nos elimina esos 300ms de espera al hacer click
+    	new FastClick(document.body);	
+		//desactivar botón atrás
+		document.addEventListener("backbutton", onBackKeyDown, false);
+
+		idComercio = window.localStorage.getItem("idComercio");
+		idUsuario = window.localStorage.getItem("idUsuario");		
+		userName = window.localStorage.getItem("userName");		
+		nombreUsuario = window.localStorage.getItem("nomApellidos");		
+		nombreComercio = window.localStorage.getItem("nombreComercio");		
 		
-		// Ejecutamos la funci—n FastClick, que es la que nos elimina esos 300ms de espera al hacer click
-    	new FastClick(document.body);		
-		paypalApp.initialize();		
-		
+		//alert("Gcommerce -" + nombreComercio );
+		document.getElementById("milabel").innerHTML= "GCOMMERCE APP - " + nombreComercio ;
+		 //$("#milabel").text("Gcommerce - " + nombreComercio );
+
     },
     
 };
 
+function onBackKeyDown(e) {
+	  e.preventDefault();
+}
+		
 // Funci—n para a–adir clases css a elementos
 function addClass( classname, element ) {
     var cn = element.className;
@@ -79,7 +96,6 @@ function removeClass( classname, element ) {
 }
 
 function menu(opcion, descripcion){
-	
 	// Si pulsamos en el bot—n de "menu" entramos en el if
 	if(opcion=="menu"){
 		if(estado=="cuerpo"){
@@ -90,21 +106,22 @@ function menu(opcion, descripcion){
 			estado="cuerpo";	
 		}
 	// Si pulsamos un bot—n del menu principal entramos en el else
-	}else{
-		
+	}else{		
 		// A–adimos la clase al li (elemento de la lista) presionado
 		addClass('li-menu-activo' , document.getElementById("ulMenu").getElementsByTagName("li")[opcion]);
 		
 		// Recogemos mediante ajax el contenido del html segœn la opci—n clickeada en el menu
-		xhReq.open("GET", "opciones/opcion"+opcion+".html", false);
-		xhReq.send(null);
-		document.getElementById("contenidoCuerpo").innerHTML=xhReq.responseText;
-		document.getElementById("milabel").innerHTML="<label> "+descripcion+" </label>";
+		//xhReq.open("GET", "opciones/opcion"+opcion+".html", false);
+		//xhReq.send(null);
+		//document.getElementById("contenidoCuerpo").innerHTML=xhReq.responseText;
+		var $content = $("#contenidoCuerpo");
+		//alert ("Contu "+$content.length);
+		currentSectionID = Number(opcion);
+		//$("#contenidoCuerpo").load ('opciones/opcion5.html',function(){alert("onLoadkkkkk: ");});
+		$("#contenidoCuerpo").load ('opciones/opcion'+opcion+'.html', $.proxy(onLoadSection, this));
+		//$content.load('sections/section_' + ideSection + '.html', $.proxy(this.onLoadSection, this));
 		
-		
-		// Refrescamos el elemento iscroll segœn el contenido ya a–adido mediante ajax, y hacemos que se desplace al top
-		myScroll.refresh();
-		myScroll.scrollTo(0,0);
+		//document.getElementById("milabel").innerHTML="<label> "+descripcion+" </label>";
 		
 		// A–adimos las clases necesarias para que la capa cuerpo se mueva al centro de nuestra app y muestre el contenido
 		cuerpo.className = 'page transition center';
@@ -115,29 +132,36 @@ function menu(opcion, descripcion){
 			removeClass('li-menu-activo' , document.getElementById("ulMenu").getElementsByTagName("li")[opcion]);
 		}, 300);
 		 
-		 
-		 if(opcion == 1) 
-		 {
-			 //sección venta
-			initVenta();
-		 }
 	 }
-
 }
-
-function initVenta()
-{
-	//alert("init venta");
+function onLoadSection ()
+{			
+	//alert("sin versos: ");
 	
-	var $btn = $('#buyNowBtn');
-	$btn.on("click", {}, $.proxy(this.clickBtn, this));	
-}
+	if(currentSection != null)
+	{
+		currentSection.dispose();
+		currentSection = null;
+	}
 
-function clickBtn(ev)
-{	
-	//alert("click boton: " + paypalApp);
+	switch(currentSectionID)
+	{				
+		case 1:
+			currentSection = new Section1("seccion1",cestaCompra);
+		break;
+
+		case 2:
+			currentSection = new Section2();
+		break;
+		
+		case 3:							
+			currentSection = new Section3();
+		break;
+
+		case 4:
+			currentSection = new Section4(); 
+		break;
+
+	}
 	
-	//50 son los euros a pagar
-	paypalApp.pay(50);		
-	ev.preventDefault();
 }

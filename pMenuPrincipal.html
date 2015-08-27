@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Gcommerce - Principal</title>
+		 <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Gcommerce - Principal</title>		
     </head>
-    <body onload="onLoad();">
+    <body>
 
 		<div id="menuprincipal">
 			<div id="wrapperMenu">
@@ -17,38 +17,45 @@
     	<div id="cuerpo">
 	        <div id="header">
 				<a href="javascript:menu('menu', 'Gcommerce');">
-				<div class="btn">MENU</div>
+					<div class="btn"> ______________m </div>
 				</a>
 				<!-- <img class="logo" src="img/logo.png" /> -->
-				<label id ="milabel" class="lbl"> Gcommerce </label>
+				<label id ="milabel" class="lbl">   </label>				
 			</div>
 			<div id="wrapper">
-				<div class="scroller">
-					<div id="contenidoCuerpo"></div>
+				<div class="scroller">	
+	
+						<div id="contenidoCuerpo">												
+<!-- 						<div id="preloader">
+							<img class="ajax-loader" src="ajax-loader.gif" > </img>					
+						</div> -->
+						</div>
 				</div>
 			</div>
 		</div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/fastclick.js"></script>
+        <script type="text/javascript" src="js/iscroll.js"></script>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>  
 		
 		<script type="text/javascript" src="js/paypal-mobile-js-helper.js"></script>
 		<script type="text/javascript" src="js/paypal.js"></script>
 		
-		
-        <script type="text/javascript" src="js/fastclick.js"></script>
-        <script type="text/javascript" src="js/iscroll.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-		<script src="js/jquery-1.11.2.min.js"></script>
-		<script src="js/jquery.mobile-1.4.5.min.js"></script>  
-        <script type="text/javascript">
-		
-		<!-- NO EXISTIA LA LLAMADA EN EL ONLOAD, ESTABA DIRECTAMENTE	-->	
-		function onLoad()
-		{ 							
-			app.initialize();
-		}
 
-			
-		
+		<!-- Custom JS -->	
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/section.js"></script>	
+		<script type="text/javascript" src="js/section0.js"></script>	
+		<script type="text/javascript" src="js/section1.js"></script>	
+		<script type="text/javascript" src="js/section2.js"></script>
+		<script type="text/javascript" src="js/section3.js"></script>
+		<script type="text/javascript" src="js/section4.js"></script>
+		<script type="text/javascript" src="js/productoCesta.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+
+        <script type="text/javascript">
+            app.initialize();
         </script>
     </body>
 </html>

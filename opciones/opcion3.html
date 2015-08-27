@@ -1,13 +1,44 @@
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<div class="borde-h1 colorGris"></div>
-<h1>Almacén</h1>
-  
-  <FONT SIZE=4> <br/>Comunica con la BBDD para buscar si existe alguna orden procedente del almacen (alta o baja de productos) pendiente de cargar en el comercio actual. <br/>
-  En tal caso la descarga y procede con la ejecución de altas y bajas. <br/> <br/> <br/>
-  
-  Las altas indican también la ubicación del producto dentro del comercio. <br/><br/>
-  Se entiende que los comercios forman parte de una franquicia en la que todos los locales 
-  tienen la misma distribución logística. </FONT>
-  
-  
-  
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>G-COMMERCE</title>
+	
+	 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />	 
+	 <link rel="stylesheet" href="css/opcion3.css" />  	 
+  </head>
+
+<body onload="onLoad()">
+	<div class="borde-h1 colorGris"></div><h1>   Mi cuenta </h1>
+		<div id="preloader">
+			<img class="ajax-loader" src="ajax-loader.gif" > </img>					
+		</div>
+		<div data-role="content" class="miWrapper" >	
+			<form id="modificarCuenta" >				
+				<label> Nombre de Usuario </label>
+				<input type="text" id="nomUsuario" class="miInput"/> 
+				<label> Password </label>
+				<input type="password" id="pwd" name="pwd" class="miInput"/> 
+				<label> Nombre y Apellidos </label>
+				<input type="text" id="nomApel" class="miInput"/> 
+				<label> Email </label>
+				<input type="text" id="email" class="miInput"/> 
+				<label> Teléfono </label>
+				<input type="number" id="tfno" class="miInput-number-long"/> 
+				
+				<label> Dirección </label>
+				<input type="text" id="direcc"  class="miInput"/> 
+				<label> Población </label>
+				<input type="text" id="poblacion" class="miInput"/> 
+				<label> CP </label>
+				<input type="number" id="codPostal" class="miInput-number-short"/> 
+				<label> Provincia </label>
+				<input type="text" id="provincia" class="miInput"/> 						
+			</form>
+			</br>
+			<button id="btnGuardarCuenta" class="ui-btn ui-shadow ui-corner-all"
+			>MODIFICAR</button>			
+		</div>
+	
+</body>
+</html>		
