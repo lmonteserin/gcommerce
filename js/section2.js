@@ -19,7 +19,11 @@ Section2.prototype.init = function()
 	this.parent.init.call(this);
 	alert('Section hija 2' +paypalApp.length);
 	
-		
+		//INICIALIZAO PAYPAL
+	alert("hhh");
+	paypalApp.initialize();		
+	alert("voy pa alla" +paypalApp.length);
+	alert("hecho");	
 	this.loadInfo();
 
 	this.renderPage();  	

@@ -55,11 +55,6 @@ var app = {
     	// Ejecutamos la funci—n FastClick, que es la que nos elimina esos 300ms de espera al hacer click
     	new FastClick(document.body);	
 		
-		//INICIALIZAO PAYPAL
-		alert("hhh");
-		alert("voy pa alla" +paypalApp);
-		paypalApp.initialize();		
-		alert("hecho");
 		//desactivar botón atrás
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
