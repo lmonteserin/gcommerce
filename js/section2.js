@@ -144,7 +144,9 @@ Section2.prototype.clickBtn = function(ev)
 	alert("tt" +Number(this.totalCesta));
 		
 	paypalApp.pay(Number(this.totalCesta));		
+	alert("pago realizado corre");
 	ev.preventDefault();
+	alert("pago realizado corre2");
 }
 
 
