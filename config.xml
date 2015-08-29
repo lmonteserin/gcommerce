@@ -3,15 +3,15 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.qinteractiva.testGcommerce"
+        id        = "com.lmonteserin.gcommerceUsu2"
         version   = "1.0.0">
 
-    <name>Gcommerce Test</name>
+    <name>Gcommerce COM2</name>
 
-    <description>App de test</description>
+    <description>Gcommerce COMERCIO 2</description>
 
-    <author href="http://www.q-interactiva.com" email="info@q-interactiva.com">
-        Qinteractiva
+    <author href="http://www.google.com" email="lmonteserin@uned.es">
+        Lidia Monteserín
     </author>
 	
 	
