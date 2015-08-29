@@ -44,7 +44,7 @@ var paypalApp =
    // paypalApplication Constructor
    initialize: function() 
    {
-	   alert("initialize paypal!");
+	 /*   alert("initialize paypal!"); */
         var clientIDs = {
        "PayPalEnvironmentProduction": paypalApp.PRODUCTION_CLIENT_ID,
        "PayPalEnvironmentSandbox": paypalApp.SANDBOX_CLIENT_ID,

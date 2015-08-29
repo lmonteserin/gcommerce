@@ -3,6 +3,7 @@
 var ProductoCesta = function() 
 {	
 	this.idProducto = 0;
+	this.nombreProducto = "";
 	this.cantidadEnCesta = 0;
 	this.cantidadOriginal = 0;
 	this.precioUnidad = 0;
@@ -13,7 +14,6 @@ var ProductoCesta = function()
 
 ProductoCesta.prototype.init = function()
 {	
-	alert('Nuevo ProductoEnCesta');	
 	//this.loadInfo();	
 };
 

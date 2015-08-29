@@ -16,7 +16,7 @@
 .milinea {
     height: 1px;
     margin: 5px 5px 1px 5px;
-    background-color: #EEF5F7;
+    background-color: #f3f3f3;
 	border:0;
 	border-radius:10px;	
 }
@@ -46,7 +46,7 @@
 	width:30%;
 	height:400px;
 	text-align:center;
-	border:3px solid #EEF5F7;
+	border:3px solid #f3f3f3;
 	border-radius:10px;
 	margin-left: 2%;
 	margin-bottom: 10px; 

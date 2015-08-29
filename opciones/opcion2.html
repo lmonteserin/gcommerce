@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-
-		
-    </head>
+<head>
+		<title>G-COMMERCE</title>
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<!-- <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />	  -->
+		<link rel="stylesheet" href="css/opcion2.css" />  	
+</head>
     <body>
-        <div>
-            <h1>Apache </h1>
-            <!--<div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>               
-            </div>-->
-			
-			 <button id="buyNowBtn"> Buy Now !</button>
-			<!--<button id="buyInFutureBtn"> Pay in Future !</button>
-			<button id="profileSharingBtn"> Profile Sharing !</button>-->
-        </div>
+		<div class="borde-h1 colorGris"></div><h1>  Productos en la cesta </h1>
+		<div id="preloader">
+			<img class="ajax-loader" src="ajax-loader.gif" > </img>	
+			</br>
+			<h4> Cargando... </h4>
+		</div>
+		</br>
+		</br>
+		
+		<div id="cestaVacia"> La cesta de la compra actualmente est&aacute vac&iacutea.  </div>
 
+		<div id="divfuera" >
+			<table id="mytable" cellspacing="0" summary="Cesta de la compra">
+				<tr>
+				  <th scope="col" class="cabecera">Art&Iacuteculo</th>
+				  <th scope="col" class="cabecera">Precio Unidad</th>
+				  <th scope="col" class="cabecera">Cantidad</th>
+				  <th scope="col" class="cabecera">Total</th>
+				  <th scope="col" class="cabecera">Borrar</th>
+				</tr>			
+			</table>
+			</br>
+			</br>
+			<div id="divPie">			
+				</br>
+				<div id="importeTotal"> </div>
+				<div id="divBoton"> 
+					<button id="buyNowBtn"> Realizar Pedido </button>		
+				</div>				
+			</div> 
+		</div>		
     </body>
 </html>

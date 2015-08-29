@@ -155,7 +155,7 @@ function onLoadSection ()
 		break;
 
 		case 2:
-			currentSection = new Section2();
+			currentSection = new Section2("seccion2",cestaCompra);
 		break;
 		
 		case 3:							

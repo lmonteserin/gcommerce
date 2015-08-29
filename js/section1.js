@@ -101,12 +101,14 @@ Section1.prototype.loadProduct = function(data)
 		var $btn;
 		var $btnSec;
 		var $idProducto;
+		var $nomProducto;
 		var $cantidadOrig;
 		var $precioUd;
 		
 		$idProducto = data.idProducto;
 		$cantidadOrig = data.cantidad;
 		$precioUd = Number(data.precio).toFixed(2);
+		$nomProducto = data.nombre + ", " + data.descripcion + " - " + data.packaging;
 
 		var newNode = document.createElement('div');
 		newNode.className = 'caja';                     
@@ -115,7 +117,7 @@ Section1.prototype.loadProduct = function(data)
 		divDesc.className = 'divMiDesc';   
 		var h = document.createElement("h2");
 		h.className = 'miDescripcion';
-		h.innerHTML = data.nombre + ", " + data.descripcion + " - " + data.packaging;			
+		h.innerHTML = $nomProducto;			
 		divDesc.appendChild(h);
 		//alert(data.descripcion);
 		
@@ -154,7 +156,7 @@ Section1.prototype.loadProduct = function(data)
 		newNode.appendChild(divBut);  
 
 		document.getElementById('contenedor').appendChild(newNode);  
-		$('#but_'+$idProducto).on("click", {idProd:$idProducto, cantOrig:$cantidadOrig, precio:$precioUd}, $.proxy(this.clickBtnComprar, this));
+		$('#but_'+$idProducto).on("click", {idProd:$idProducto, nomProd:$nomProducto,cantOrig:$cantidadOrig, precio:$precioUd}, $.proxy(this.clickBtnComprar, this));
 }
 
 
@@ -167,11 +169,13 @@ Section1.prototype.clickBtnComprar = function(ev)
 	{	
 		miCompra = new ProductoCesta();
 		miCompra.idProducto = ev.data.idProd;
+		miCompra.nombreProducto = ev.data.nomProd;
 		miCompra.cantidadEnCesta =  miCompra.cantidadEnCesta + 1;
 		miCompra.cantidadOriginal = ev.data.cantOrig;
 		miCompra.precioUnidad = ev.data.precio;
 		miCompra.precioTotal = miCompra.cantidadEnCesta * miCompra.precioUnidad;
 		ref.cestaProductos.push(miCompra);
+		alert('Producto a\u00f1adido a la cesta');	
 	}else
 	{
 		miCompra = ref.searchProducto(ev.data.idProd, ref.cestaProductos);
@@ -183,6 +187,7 @@ Section1.prototype.clickBtnComprar = function(ev)
 		else // que ya esté en la cesta y sólo modificamos la cantidad
 		{		
 			ref.modCantPrecioProducto(ev.data.idProd, ref.cestaProductos);
+			alert('Producto a\u00f1adido a la cesta');	
 		}			
 	}
 	
@@ -224,7 +229,7 @@ Section1.prototype.modCantPrecioProducto = function(nameKey, myArray){
 Section1.prototype.renderPage = function()
 {	
 	this.parent.renderPage.call(this);
-	console.log('renderPage Section hija 1');
+	/* console.log('renderPage Section hija 1'); */
 };
 
 Section1.prototype.dispose = function()
