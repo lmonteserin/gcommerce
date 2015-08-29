@@ -21,7 +21,7 @@ Section2.prototype.init = function()
 	//alert('Section hija 2' +paypalApp.length);
 	
 	//INICIALIZAO PAYPAL DESCOMENTARRRA PARA SUBIRRRRRRRRRR
-	//paypalApp.initialize();		
+	paypalApp.initialize();		
 	
 	this.loadInfo();
 
@@ -141,8 +141,9 @@ Section2.prototype.clickBtn = function(ev)
 {
 	alert("click boton: " + paypalApp);
 	alert("total" + this.totalCesta);
+	alert("tt" +Number(this.totalCesta));
 		
-	paypalApp.pay(this.totalCesta);		
+	paypalApp.pay(Number(this.totalCesta));		
 	ev.preventDefault();
 }
 
