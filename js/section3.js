@@ -52,10 +52,10 @@ Section3.prototype.loadInfo = function ()
 		cache: false,  		
 		data:{ 
 			obtener:"true",
-			//idUsuario: window.localStorage.getItem("idUsuario"),
-			//idComercio: window.localStorage.getItem("idComercio"),
-			idUsuario: 26,
-			idComercio: 5,
+			idUsuario: window.localStorage.getItem("idUsuario"),
+			idComercio: window.localStorage.getItem("idComercio"),
+			/* idUsuario: 26,
+			idComercio: 5, */
 		}, 		
 		dataType: "json",								
 		success: function(data){
@@ -120,7 +120,7 @@ Section3.prototype.clickBtn = function(ev)
 				poblacion: this.pobla, 
 				cp: this.cod_postal, 
 				provincia: this.prov, 
-				idUsuario: 26 /*window.localStorage.getItem("idUsuario")*/,
+				idUsuario: window.localStorage.getItem("idUsuario"),
 			}, 		
 			dataType: "json",				
 			success : function(data) { 												
