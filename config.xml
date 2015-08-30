@@ -3,8 +3,11 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.pfc.Gcommerce"
+        id        = "com.pfc.GcommerceCom1"
         version   = "2.0.0">
+	<gap:config-file platform="android" parent="/manifest">
+		<application android:debuggable="false" />
+	</gap:config-file>
 
     <name>Gcommerce COM1</name>
 
@@ -139,5 +142,4 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-
 </widget>
