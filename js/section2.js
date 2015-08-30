@@ -36,6 +36,9 @@ Section2.prototype.loadInfo = function ()
 		var el = document.getElementById('cestaVacia'); 
 		el.style.display = 'none';	
 		
+		var el2 = document.getElementById('pedidoFinalizado'); 
+		el2.style.display = 'none';	
+		
 		var miCompra;	
 		//la llamada a mostrar preloader
 		this.showPreloader();		
@@ -62,6 +65,8 @@ Section2.prototype.loadInfo = function ()
 	else{
 		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none'; //damos un atributo display:none que oculta el div
+		var el = document.getElementById('pedidoFinalizado'); 
+		el.style.display = 'none'; 
 		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'block';
 	}
@@ -140,13 +145,21 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 Section2.prototype.clickBtn = function(ev)
 {
 	/* alert("click boton: " + paypalApp);
-	alert("total" + this.totalCesta); */
-	alert("tt" +Number(this.totalCesta));
+	alert("total" + this.totalCesta); 
+	alert("tt" +Number(this.totalCesta));*/
 		
-	paypalApp.pay(Number(this.totalCesta));		
-	alert("pago realizado corre");
+	paypalApp.pay(Number(this.totalCesta));			
+
+	var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
+	el.style.display = 'none'; //damos un atributo display:none que oculta el div
+	var el = document.getElementById('pedidoFinalizado'); 
+	el.style.display = 'block'; 
+	var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
+	el.style.display = 'none';
+	this.cestaProductos.splice(0,this.cestaProductos.length);
+		
 	ev.preventDefault();
-	alert("pago realizado corre2");
+	//alert("pago realizado corre2");
 }
 
 

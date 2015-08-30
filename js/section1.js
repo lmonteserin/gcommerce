@@ -35,8 +35,7 @@ Section1.prototype.loadInfo = function ()
 
 	//aqui la llamada a mostrar preloader
 	this.showPreloader();
-	alert("ss");
-	alert ("idComercio"+window.localStorage.getItem("idComercio"));
+/* 	alert ("idComercio"+window.localStorage.getItem("idComercio")); */
 	new FastClick($("body"));
  	$.ajax({
 		type : 'GET', 

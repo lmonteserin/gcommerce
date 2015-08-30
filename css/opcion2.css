@@ -106,6 +106,16 @@ td {
 	font-size:16pt; 
 	/* color: #6b6b6b !important;	 */
 }
+
+#pedidoFinalizado{
+	width: 70%;
+	height: 150px;
+	background-color: #f3f3f3;
+	padding-left: 10%;
+	padding-top: 5%;
+	margin-left: 10%;
+	font-size:16pt; 	
+}
 .botonBorrar{
 	height:30px;
 	width:40px;
