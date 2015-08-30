@@ -3,14 +3,14 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.lmonteserin.gcommerceUsu2"
+        id        = "com.lmonteserin.gcommerceCom1"
         version   = "1.0.0">
 
-    <name>Gcommerce COM2</name>
+    <name>Gcommerce COM1</name>
 
-    <description>Gcommerce COMERCIO 2</description>
+    <description>Gcommerce COMERCIO 1</description>
 
-    <author href="http://www.google.com" email="lmonteserin@uned.es">
+    <author href="http://www.google.com" email="lmonteserin@gmail.com">
         Lidia Monteserín
     </author>
 	
