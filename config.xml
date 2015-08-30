@@ -5,9 +5,6 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.pfc.GcommerceCom1"
         version   = "2.0.0">
-	<gap:config-file platform="android" parent="/manifest">
-		<application android:debuggable="false" />
-	</gap:config-file>
 
     <name>Gcommerce COM1</name>
 
@@ -108,9 +105,13 @@
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"          gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
-    <gap:config-file platform="ios" parent="CFBundleShortVersionString">
+<!--     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
     <string>100</string>
-    </gap:config-file>
+    </gap:config-file> -->
+	<gap:config-file platform="android" parent="/manifest">
+		<application android:debuggable="false" />
+	</gap:config-file>
+
 
     <!--
         Define access to external domains.
