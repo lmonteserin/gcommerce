@@ -77,5 +77,14 @@
 }
 
 .miBoton {
-	color:green;
+/* 	margin-right: 2%;  */
+	/* margin-right: 2%; */
+	outline: 0;
+	margin-top: 3%; 
+	border-radius:10px;
+	height:30px;
+	width:130px;
+	font-size:10pt; 
+	/* font-weight: bold !important; */
+	background-color: #e8e8e8;
 }

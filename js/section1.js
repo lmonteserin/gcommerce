@@ -42,10 +42,10 @@ Section1.prototype.loadInfo = function ()
 		url : urlService, 
 		cache: false,  		
 		data:{ 
-			//idUsuario: window.localStorage.getItem("idUsuario"),
-			//idComercio: window.localStorage.getItem("idComercio"),
 			idProducto: 0,
-			idComercio: 6,
+			idComercio: window.localStorage.getItem("idComercio"),
+			/* idProducto: 0,
+			idComercio: 6, */
 			}, 		
 		dataType: "json",								
 		success: function(data){
@@ -63,15 +63,16 @@ Section1.prototype.onServerResponseIds = function (data)
 //alert("correcto y llamo al siguiente");
 	var ref = this;
 	var cuenta = 0;
+	var idCom = window.localStorage.getItem("idComercio");
 	$.each(data, function(k, v){
-		ref.loadImage(v.idProducto)
+		ref.loadImage(v.idProducto, idCom)
 	});			
 	
 	this.hidePreloader();
     this.renderPage();
 }
 
-Section1.prototype.loadImage = function (idProd)
+Section1.prototype.loadImage = function (idProd,idCom)
 {  
 	//alert("idpror"+ idProd);
 	var ref = this;
@@ -79,11 +80,9 @@ Section1.prototype.loadImage = function (idProd)
 		type : 'GET', 
 		url : 'http://1-dot-webgcommerceue.appspot.com/getImagenes', // Servlet URL 
 		data:{ 
-			//idUsuario: window.localStorage.getItem("idUsuario"),
-			//idComercio: window.localStorage.getItem("idComercio"),
 			idProducto: idProd,
 			tipo:"json",
-			idComercio: 6,
+			idComercio: idCom,
 		}, 		
 		cache:false,
 		dataType: "json",								
@@ -107,8 +106,8 @@ Section1.prototype.loadProduct = function(data)
 		
 		$idProducto = data.idProducto;
 		$cantidadOrig = data.cantidad;
-		$precioUd = Number(data.precio).toFixed(2);
-		$nomProducto = data.nombre + ", " + data.descripcion + " - " + data.packaging;
+		$precioUd = Number(data.precio).toFixed(2);		
+		$nomProducto = this.norm_unicode(data.nombre + ", " + data.descripcion + " - " + data.packaging);
 
 		var newNode = document.createElement('div');
 		newNode.className = 'caja';                     
@@ -143,9 +142,9 @@ Section1.prototype.loadProduct = function(data)
 		var divBut = document.createElement("div");
 		divBut.className = 'divButton'; 
 		var but = document.createElement("button");
-		 but.setAttribute("id", "but_"+$idProducto); 
+		but.setAttribute("id", "but_"+$idProducto); 
 		but.className ='miBoton';		
-		var t = document.createTextNode("Comprar!");     		
+		var t = document.createTextNode("A\u00f1adir a la cesta");     		
 		but.appendChild(t);  	
 		divBut.appendChild(but);
 
@@ -157,6 +156,24 @@ Section1.prototype.loadProduct = function(data)
 
 		document.getElementById('contenedor').appendChild(newNode);  
 		$('#but_'+$idProducto).on("click", {idProd:$idProducto, nomProd:$nomProducto,cantOrig:$cantidadOrig, precio:$precioUd}, $.proxy(this.clickBtnComprar, this));
+}
+
+Section1.prototype.norm_unicode = function(str){
+	str = str.replace('á','\u00e1');
+	str = str.replace('é','\u00e9');
+	str = str.replace('í','\u00ed');
+	str = str.replace('ó','\u00f3');
+	str = str.replace('ú','\u00fa');
+
+	str = str.replace('Á','\u00c1');
+	str = str.replace('É','\u00c9');
+	str = str.replace('Í','\u00cd');
+	str = str.replace('Ó','\u00d3');
+	str = str.replace('Ú','\u00da');
+
+	str = str.replace('ñ','\u00f1');
+	str = str.replace('Ñ','\u00d1');
+	return str;
 }
 
 

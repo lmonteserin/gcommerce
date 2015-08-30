@@ -46,8 +46,8 @@ Section2.prototype.loadInfo = function ()
 		} 
 
 		var divTotal = document.createElement('div');
-		divTotal.className = 'divMiImporte';   
-		divTotal.innerHTML = "Total  " + ref.totalCesta +' \u20AC';
+		divTotal.className = 'divMiImporte';   		
+		divTotal.innerHTML = "Total  " + Number(ref.totalCesta).toFixed(2) +' \u20AC';
 		
 		document.getElementById('importeTotal').appendChild(divTotal);  		
 		
@@ -83,7 +83,7 @@ Section2.prototype.loadProductCesta = function(miCompra)
 		tdCantidad.innerHTML = miCompra.cantidadEnCesta;
 	
 		var tdTotal = document.createElement("td");
-		tdTotal.innerHTML = miCompra.precioTotal +' \u20AC';
+		tdTotal.innerHTML = Number(miCompra.precioTotal).toFixed(2) +' \u20AC';
 		this.totalCesta = this.totalCesta + miCompra.precioTotal ;
 
 		var tdBut = document.createElement("td");
@@ -139,8 +139,8 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {
-	alert("click boton: " + paypalApp);
-	alert("total" + this.totalCesta);
+	/* alert("click boton: " + paypalApp);
+	alert("total" + this.totalCesta); */
 	alert("tt" +Number(this.totalCesta));
 		
 	paypalApp.pay(Number(this.totalCesta));		
