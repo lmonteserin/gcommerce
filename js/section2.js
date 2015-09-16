@@ -149,7 +149,9 @@ Section2.prototype.clickBtn = function(ev)
 	alert("tt" +Number(this.totalCesta));*/
 		
 	var pago = paypalApp.pay(Number(this.totalCesta));			
-	alert("Longitud depago"+ pago);
+	alert("HOLA");
+	
+	alert("Longitud depago"+ paypalApp.PAYPAL_TYPE_INTENT);
 	
 	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 	var ref = this;
