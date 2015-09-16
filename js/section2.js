@@ -158,20 +158,16 @@ Section2.prototype.clickBtn = function(ev)
 			type : 'POST', 
 			url : urlService, 
 			cache: false,  		
-			data:{ 
-				obtener:"true",
-				idUsuario: window.localStorage.getItem("idUsuario"),
-				idComercio: window.localStorage.getItem("idComercio"),
-				/* idUsuario: 26,
-				idComercio: 5, */
+			data:{ 				
+				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
+				precioTotal: Number(this.totalCesta),
 			}, 		
 			dataType: "json",								
 			success: function(data){
 				//alert(responseText);
 					var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
 					el.style.display = 'none'; //damos un atributo display:none que oculta el div
-					var el = document.getElementById('pedidoFinalizado'); 
-					el.innerHTML ="Pedido Cancelado";
+					var el = document.getElementById('pedidoFinalizado'); 			
 					el.style.display = 'block'; 
 					var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 					el.style.display = 'none';
@@ -182,7 +178,14 @@ Section2.prototype.clickBtn = function(ev)
 			}			
 		});			
 	}else if (paypalApp.EXITO = "no") {
-		
+		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none'; //damos un atributo display:none que oculta el div
+		var el = document.getElementById('pedidoFinalizado'); 			
+		el.innerHTML ="Pedido Cancelado";
+		el.style.display = 'block'; 
+		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none';
+		this.cestaProductos.splice(0,this.cestaProductos.length);	
 	}
 			
 	ev.preventDefault();
