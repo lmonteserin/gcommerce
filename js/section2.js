@@ -148,7 +148,35 @@ Section2.prototype.clickBtn = function(ev)
 	alert("total" + this.totalCesta); 
 	alert("tt" +Number(this.totalCesta));*/
 		
-	paypalApp.pay(Number(this.totalCesta));			
+	var pago = paypalApp.pay(Number(this.totalCesta));			
+	alert("Longitud depago"+ pago.length);
+	
+	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
+	var ref = this;
+	$.ajax({
+		type : 'POST', 
+		url : urlService, 
+		cache: false,  		
+		data:{ 
+			obtener:"true",
+			idUsuario: window.localStorage.getItem("idUsuario"),
+			idComercio: window.localStorage.getItem("idComercio"),
+			/* idUsuario: 26,
+			idComercio: 5, */
+		}, 		
+		dataType: "json",								
+		success: function(data){
+			//alert(responseText);
+			ref.onServerResponse(data); 
+										
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			ref.onDataError(xhr, ajaxOptions, thrownError);				
+		}			
+	});	
+	
+	
+	
 
 	var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
 	el.style.display = 'none'; //damos un atributo display:none que oculta el div
