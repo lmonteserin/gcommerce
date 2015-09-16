@@ -162,6 +162,7 @@ Section2.prototype.clickBtn = function(ev)
 			data:{ 				
 				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
 				precioTotal: Number(this.totalCesta),
+				cesta:JSON.stringify(this.cestaProductos),
 			}, 		
 			dataType: "json",								
 			success: function(data){
