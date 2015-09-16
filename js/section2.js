@@ -154,6 +154,7 @@ Section2.prototype.clickBtn = function(ev)
 	if (paypalApp.EXITO = "si") {
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 		var ref = this;
+		alert("HOLA");
 		$.ajax({
 			type : 'POST', 
 			url : urlService, 
