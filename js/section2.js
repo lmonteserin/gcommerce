@@ -151,9 +151,8 @@ Section2.prototype.clickBtn = function(ev)
 	var dime = paypalApp.pay(Number(ref.totalCesta));		
 alert ("hola: "+dime);
 	var blob = JSON.stringify(ref.cestaProductos);
-	 alert ("Hola"+blob); 
+	 //alert ("Hola"+blob); 
 	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
-	var ref = this;
 	$.ajax({
 		type : 'POST', 
 		url : urlService, 

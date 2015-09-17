@@ -55,7 +55,7 @@ var paypalApp =
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
 
 		var content = JSON.stringify(payment);	 
-	
+	return "si";
    },
 
    onAuthorizationCallback : function(authorization) 
@@ -140,7 +140,7 @@ var paypalApp =
 	  var payment = paypalApp.createPayment(paypalAmount);	
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);
 
-	  return "no";
+	  //return "no";
    },
 
 
@@ -156,6 +156,7 @@ var paypalApp =
 		el.style.display = 'block'; 
 		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none';
+		return "no";
 		   
    }
 };
