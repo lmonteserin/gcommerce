@@ -149,7 +149,8 @@ Section2.prototype.clickBtn = function(ev)
 
 	//alert(" cesta antes llamada"+ref.cestaProductos);
 	var importeTotal = Number(this.totalCesta);
-	var dime = paypalApp.pay(importeTotal);			
+	var dime = paypalApp.pay(importeTotal);		
+alert(dime);	
 	var blob = JSON.stringify(this.cestaProductos);
 	 //alert ("Hola"+blob); 
 	var ref = this;			

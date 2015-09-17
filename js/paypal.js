@@ -148,10 +148,7 @@ var paypalApp =
    {	  
 	  var payment = paypalApp.createPayment(paypalAmount);	
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);
-	  if (paypalApp.EXITO == "no")
-			return "no";
-		else 
-		  return "si";
+	  return paypment;
    },
 
 
