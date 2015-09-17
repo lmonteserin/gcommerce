@@ -58,7 +58,7 @@ var paypalApp =
 
    onSuccesfulPayment : function(payment) 
    {
-     //alert("payment success: " + JSON.stringify(payment, null, 4));
+     alert("payment success: " + JSON.stringify(payment, null, 4));
 	 paypalApp.EXITO = "si";
      var content = JSON.stringify(payment);
    },
@@ -143,7 +143,7 @@ var paypalApp =
    pay : function(paypalAmount) 
    {
 	  var payment = paypalApp.createPayment(paypalAmount);		
-    PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);      
+      PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);      
    },
 
 
