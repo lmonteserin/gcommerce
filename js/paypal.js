@@ -61,6 +61,16 @@ var paypalApp =
      //alert("payment success: " + JSON.stringify(payment, null, 4));
 	 paypalApp.EXITO = "si";
      var content = JSON.stringify(payment);
+	 
+		var ref = this;
+		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none'; //damos un atributo display:none que oculta el div
+		var el = document.getElementById('pedidoFinalizado'); 			
+		el.innerHTML ="mi culo";
+		el.style.display = 'block'; 
+		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none';
+		ref.cestaProductos.splice(0,ref.cestaProductos.length);	
    },
 
    onAuthorizationCallback : function(authorization) 
