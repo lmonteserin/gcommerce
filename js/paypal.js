@@ -59,7 +59,7 @@ var paypalApp =
    {
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
 		var content = JSON.stringify(payment);
-	 
+	  alert ("Hola cc"+cestaDeCompra); 
 		var blob = JSON.stringify(cestaDeCompra);
 		 alert ("Hola"+blob); 
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
@@ -171,6 +171,8 @@ var paypalApp =
 	   alert(" cesta"+cesta);
 	   alert(" cestaCompra"+cestaDeCompra);
 	  cestaDeCompra = cesta;
+	  this.cestita = cesta;
+	  alert(" cesttita "+this.cestita);
 	  alert(" cesta"+cestaDeCompra);
 	  importeTotal = paypalAmount;
 	  var payment = paypalApp.createPayment(paypalAmount);		
