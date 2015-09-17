@@ -21,6 +21,8 @@ Section2.prototype.init = function()
 	//alert('Section hija 2' +paypalApp.length);
 	
 	//INICIALIZAO PAYPAL DESCOMENTARRRA PARA SUBIRRRRRRRRRR
+	/****************************************/
+	/*******************************/
 	paypalApp.initialize();		
 	
 	this.loadInfo();
@@ -144,25 +146,22 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {
-	/* alert("click boton: " + paypalApp);
-	alert("total" + this.totalCesta); 
-	alert("tt" +Number(this.totalCesta));*/
-		
 	paypalApp.pay(Number(this.totalCesta));			
 	//alert("HOLA");
 	
 	if (paypalApp.EXITO = "si") {
+		var blob = JSON.stringify(this.cestaProductos);
+		/* alert ("Hola"+blob); */
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 		var ref = this;
-		alert("HOLA");
 		$.ajax({
 			type : 'POST', 
 			url : urlService, 
 			cache: false,  		
 			data:{ 				
 				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
-				precioTotal: Number(this.totalCesta),
-				cesta:JSON.stringify(this.cestaProductos),
+				precioTotal: Number(this.totalCesta),	
+				cestaCompra:blob,			
 			}, 		
 			dataType: "json",								
 			success: function(data){
@@ -173,7 +172,7 @@ Section2.prototype.clickBtn = function(ev)
 					el.style.display = 'block'; 
 					var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 					el.style.display = 'none';
-					this.cestaProductos.splice(0,this.cestaProductos.length);	
+					ref.cestaProductos.splice(0,ref.cestaProductos.length);	
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert("eerrores durante la insercion");		
