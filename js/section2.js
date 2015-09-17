@@ -146,9 +146,9 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {	
-	paypalApp.pay(Number(this.totalCesta), this.cestaProductos);			
-	
 	var ref = this;		
+	paypalApp.pay(Number(ref.totalCesta), ref.cestaProductos);			
+	
 	ref.cestaProductos.splice(0,ref.cestaProductos.length);	
 	ev.preventDefault();
 	//alert("pago realizado corre2");

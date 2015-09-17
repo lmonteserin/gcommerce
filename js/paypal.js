@@ -17,7 +17,7 @@
 * under the License.
 */
 
-var cestaCompra;
+var cestaDeCompra;
 var importeTotal;
 
 
@@ -60,8 +60,8 @@ var paypalApp =
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
 		var content = JSON.stringify(payment);
 	 
-		var blob = JSON.stringify(cestaCompra);
-		/* alert ("Hola"+blob); */
+		var blob = JSON.stringify(cestaDeCompra);
+		 alert ("Hola"+blob); 
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 		var ref = this;
 		$.ajax({
@@ -168,7 +168,7 @@ var paypalApp =
 
    pay : function(paypalAmount, cesta) 
    {
-	  cestaCompra = cesta;
+	  cestaDeCompra = cesta;
 	  importeTotal = paypalAmount;
 	  var payment = paypalApp.createPayment(paypalAmount);		
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);   
