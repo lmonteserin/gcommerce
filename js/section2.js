@@ -155,6 +155,8 @@ Section2.prototype.clickBtn = function(ev)
 	var ref = this;		
 	alert ("hola: "+dime);
 	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
+	var soyYo = document.getElementById('pedidoFinalizado'); 
+	alert("soy yo"+ soyYo.innerHTML);
 	$.ajax({
 		type : 'POST', 
 		url : urlService, 
@@ -167,12 +169,7 @@ Section2.prototype.clickBtn = function(ev)
 		dataType: "json",								
 		success: function(data){
 			//alert(responseText);
-				var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
-				el.style.display = 'none'; //damos un atributo display:none que oculta el div
-				var el = document.getElementById('pedidoFinalizado'); 			
-				el.style.display = 'block'; 
-				var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
-				el.style.display = 'none';			
+				
 				ref.cestaProductos.splice(0,ref.cestaProductos.length);					
 		},
 		error: function(xhr, ajaxOptions, thrownError) {

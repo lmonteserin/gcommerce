@@ -57,6 +57,14 @@ var paypalApp =
 
 		var content = JSON.stringify(payment);	 
 		paypalApp.EXITO = "si";
+
+		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none'; //damos un atributo display:none que oculta el div
+		var el = document.getElementById('pedidoFinalizado'); 			
+		el.innerHTML ="Su pedido ha sido tramitado correctamente.";
+		el.style.display = 'block'; 
+		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none';			
    },
 
    onAuthorizationCallback : function(authorization) 
@@ -155,7 +163,7 @@ var paypalApp =
 	    var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
 	 	el.style.display = 'none'; //damos un atributo display:none que oculta el div
 		var el = document.getElementById('pedidoFinalizado'); 			
-		el.innerHTML ="Pedido Cancelado";
+		el.innerHTML ="Pedido Cancelado.";
 		el.style.display = 'block'; 
 		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none';
