@@ -149,7 +149,7 @@ Section2.prototype.clickBtn = function(ev)
 	paypalApp.pay(Number(this.totalCesta));			
 	//alert("HOLA");
 	
-	if (paypalApp.EXITO = "si") {
+	if (paypalApp.EXITO == "si") {
 		var blob = JSON.stringify(this.cestaProductos);
 		/* alert ("Hola"+blob); */
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
@@ -178,7 +178,7 @@ Section2.prototype.clickBtn = function(ev)
 				alert("eerrores durante la insercion");		
 			}			
 		});			
-	}else if (paypalApp.EXITO = "no") {
+	}else if (paypalApp.EXITO == "no") {
 		alert("cancel");
 		var ref = this;
 		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
