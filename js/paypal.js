@@ -174,7 +174,7 @@ var paypalApp =
 	  alert(" cesta"+cestaDeCompra);
 	  importeTotal = paypalAmount;
 	  var payment = paypalApp.createPayment(paypalAmount);		
-      PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment(cesta), paypalApp.onUserCanceled);   
+      PayPalMobile.renderSinglePaymentUI(payment,cesta, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);   
    },
 
 
