@@ -38,7 +38,7 @@ var paypalApp =
     PAYPAL_CURRENCY_CODE:"EUR",
     PAYPAL_LANGUAGE:"es",
     PAYPAL_TYPE_INTENT:"Sale",
-	cestota: new Array(),
+	CESTOTA: new Array(),
 	
 	
    // paypalApplication Constructor
@@ -60,8 +60,9 @@ var paypalApp =
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
 		var content = JSON.stringify(payment);
 	  alert ("Hola cc"+cestaDeCompra); 
-	  alert ("Hola cesto"+paypalApp.cestota); 
-		var blob = JSON.stringify(cestaDeCompra);
+	  alert ("Hola cesto"+paypalApp.CESTOTA); 
+	  alert ("Hola cesto"+paypalApp.CESTOTA.LENGTH); 
+		var blob = JSON.stringify(paypalApp.CESTOTA);
 		 alert ("Hola"+blob); 
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 		var ref = this;
@@ -172,8 +173,8 @@ var paypalApp =
 	   alert(" cesta"+cesta);
 	   alert(" cestaCompra"+cestaDeCompra);
 	  cestaDeCompra = cesta;
-	  paypalApp.cestota = cesta;
-	  alert(" cesttota "+paypalApp.cestota);
+	  paypalApp.CESTOTA = cesta;
+	  alert(" cesttota "+paypalApp.CESTOTA);
 	  alert(" cesta"+cestaDeCompra);
 	  importeTotal = paypalAmount;
 	  var payment = paypalApp.createPayment(paypalAmount);		
