@@ -17,10 +17,6 @@
 * under the License.
 */
 
-var cestaDeCompra;
-var importeTotal;
-
-
 var paypalApp =
  {
 	//PAYPAL
@@ -54,40 +50,12 @@ var paypalApp =
 
 
 
-   onSuccesfulPayment : function(payment, miCesta) 
+   onSuccesfulPayment : function(payment) 
    {
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
-		alert("hoal");
-		var content = JSON.stringify(payment);
-	  alert ("Hola culo"+miCesta); 
-	 
-		var blob = JSON.stringify(miCesta);
-		 alert ("Hola"+blob); 
-		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
-		var ref = this;
-		$.ajax({
-			type : 'POST', 
-			url : urlService, 
-			cache: false,  		
-			data:{ 				
-				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
-				precioTotal: importeTotal,	
-				cestaCompra:blob,			
-			}, 		
-			dataType: "json",								
-			success: function(data){
-				//alert(responseText);
-					var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
-					el.style.display = 'none'; //damos un atributo display:none que oculta el div
-					var el = document.getElementById('pedidoFinalizado'); 			
-					el.style.display = 'block'; 
-					var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
-					el.style.display = 'none';					
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert("Error insertando el pedido");		
-			}			
-		});		
+
+		var content = JSON.stringify(payment);	 
+	
    },
 
    onAuthorizationCallback : function(authorization) 
@@ -167,16 +135,12 @@ var paypalApp =
 
 
 
-   pay : function(paypalAmount, cesta) 
-   {
-	   alert(" cesta"+cesta);
-	   alert(" cestaCompra"+cestaDeCompra);
-	  cestaDeCompra = cesta;
-	  alert(" cesta"+cestaDeCompra);
-	  importeTotal = paypalAmount;
+   pay : function(paypalAmount) 
+   {	  
 	  var payment = paypalApp.createPayment(paypalAmount);	
-	var miCesta = cesta;
-      PayPalMobile.renderSinglePaymentUI(payment,miCesta, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);   
+      PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);
+
+	  return "no";
    },
 
 
