@@ -23,7 +23,6 @@ var importeTotal;
 
 var paypalApp =
  {
-	this.cestota = new Array();
 	//PAYPAL
     //LIVE: "PayPalEnvironmentProduction"
     //SANDBOX: "PayPalEnvironmentSandbox"
@@ -39,6 +38,7 @@ var paypalApp =
     PAYPAL_CURRENCY_CODE:"EUR",
     PAYPAL_LANGUAGE:"es",
     PAYPAL_TYPE_INTENT:"Sale",
+	cestota: new Array(),
 	
 	
    // paypalApplication Constructor
