@@ -179,6 +179,8 @@ Section2.prototype.clickBtn = function(ev)
 			}			
 		});			
 	}else if (paypalApp.EXITO = "no") {
+		alert("cancel");
+		var ref = this;
 		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none'; //damos un atributo display:none que oculta el div
 		var el = document.getElementById('pedidoFinalizado'); 			
@@ -186,7 +188,7 @@ Section2.prototype.clickBtn = function(ev)
 		el.style.display = 'block'; 
 		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none';
-		this.cestaProductos.splice(0,this.cestaProductos.length);	
+		ref.cestaProductos.splice(0,ref.cestaProductos.length);	
 	}
 			
 	ev.preventDefault();
