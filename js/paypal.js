@@ -168,7 +168,10 @@ var paypalApp =
 
    pay : function(paypalAmount, cesta) 
    {
+	   alert(" cesta"+cesta);
+	   alert(" cestaCompra"+cestaDeCompra);
 	  cestaDeCompra = cesta;
+	  alert(" cesta"+cestaDeCompra);
 	  importeTotal = paypalAmount;
 	  var payment = paypalApp.createPayment(paypalAmount);		
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);   
