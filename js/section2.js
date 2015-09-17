@@ -152,30 +152,30 @@ Section2.prototype.clickBtn = function(ev)
 	var dime = paypalApp.pay(importeTotal);			
 	var blob = JSON.stringify(this.cestaProductos);
 	 //alert ("Hola"+blob); 
-	var ref = this;		
-	alert ("hola: "+dime);
+	var ref = this;			
 	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 	var soyYo = document.getElementById('pedidoFinalizado'); 
-	alert("soy yo"+ soyYo.innerHTML);
-	$.ajax({
-		type : 'POST', 
-		url : urlService, 
-		cache: false,  		
-		data:{ 				
-			idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
-			precioTotal: importeTotal,	
-			cestaCompra:blob,			
-		}, 		
-		dataType: "json",								
-		success: function(data){
-			//alert(responseText);
-				
+	//alert("soy yo"+ soyYo.innerHTML);
+	if (soyYo == "Su pedido ha sido tramitado correctamente.") {
+		$.ajax({
+			type : 'POST', 
+			url : urlService, 
+			cache: false,  		
+			data:{ 				
+				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
+				precioTotal: importeTotal,	
+				cestaCompra:blob,			
+			}, 		
+			dataType: "json",								
+			success: function(data){
+				//alert(responseText);
 				ref.cestaProductos.splice(0,ref.cestaProductos.length);					
-		},
-		error: function(xhr, ajaxOptions, thrownError) {
-			alert("Error insertando el pedido");		
-		}			
-	});	
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert("Error insertando el pedido");		
+			}			
+		});	
+	}	
 		
 	ev.preventDefault();
 	//alert("pago realizado corre2");
