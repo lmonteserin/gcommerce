@@ -58,7 +58,7 @@ var paypalApp =
 
    onSuccesfulPayment : function(payment) 
    {
-     alert("payment success: " + JSON.stringify(payment, null, 4));
+     //alert("payment success: " + JSON.stringify(payment, null, 4));
 	 paypalApp.EXITO = "si";
      var content = JSON.stringify(payment);
    },

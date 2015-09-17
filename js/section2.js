@@ -145,11 +145,10 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 }
 
 Section2.prototype.clickBtn = function(ev)
-{
-	alert("HOLA");
+{	
 	paypalApp.pay(Number(this.totalCesta));			
 	//alert("HOLA");
-	alert("hola"+paypalApp.EXITO);
+	//alert("hola"+paypalApp.EXITO);
 	if (paypalApp.EXITO == "si") {
 		var blob = JSON.stringify(this.cestaProductos);
 		/* alert ("Hola"+blob); */
@@ -180,7 +179,7 @@ Section2.prototype.clickBtn = function(ev)
 			}			
 		});			
 	}else if (paypalApp.EXITO == "no") {
-		alert("cancel");
+		//alert("cancel");
 		var ref = this;
 		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none'; //damos un atributo display:none que oculta el div
