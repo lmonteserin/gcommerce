@@ -146,12 +146,14 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {	
-	var ref = this;		
+
 	//alert(" cesta antes llamada"+ref.cestaProductos);
-	var dime = paypalApp.pay(Number(ref.totalCesta));		
-alert ("hola: "+dime);
-	var blob = JSON.stringify(ref.cestaProductos);
+	var importeTotal = Number(this.totalCesta);
+	var dime = paypalApp.pay(importeTotal);			
+	var blob = JSON.stringify(this.cestaProductos);
 	 //alert ("Hola"+blob); 
+	var ref = this;		
+	alert ("hola: "+dime);
 	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 	$.ajax({
 		type : 'POST', 
@@ -170,14 +172,14 @@ alert ("hola: "+dime);
 				var el = document.getElementById('pedidoFinalizado'); 			
 				el.style.display = 'block'; 
 				var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
-				el.style.display = 'none';					
+				el.style.display = 'none';			
+				ref.cestaProductos.splice(0,ref.cestaProductos.length);					
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert("Error insertando el pedido");		
 		}			
 	});	
-	
-	ref.cestaProductos.splice(0,ref.cestaProductos.length);	
+		
 	ev.preventDefault();
 	//alert("pago realizado corre2");
 }
