@@ -146,9 +146,9 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {	
-	paypalApp.pay(Number(this.totalCesta));			
-	//alert("HOLA");
-	alert("hola antes:"+paypalApp.EXITO);
+	var exitoso = paypalApp.pay(Number(this.totalCesta));			
+	alert("HOLA");
+	alert("hola antes:"+exitoso);
 	if (paypalApp.EXITO == "si") {
 		var blob = JSON.stringify(this.cestaProductos);
 		/* alert ("Hola"+blob); */

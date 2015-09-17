@@ -143,7 +143,8 @@ var paypalApp =
    pay : function(paypalAmount) 
    {
 	  var payment = paypalApp.createPayment(paypalAmount);		
-      PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);      
+      PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);   
+	  return  paypalApp.EXITO;
    },
 
 
