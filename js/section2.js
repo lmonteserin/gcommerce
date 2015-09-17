@@ -146,51 +146,9 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {	
-	var exitoso = paypalApp.pay(Number(this.totalCesta), this.cestaProductos);			
-	alert("HOLA");
-	var ref = this;
+	paypalApp.pay(Number(this.totalCesta), this.cestaProductos);			
 	
-	/*if (paypalApp.EXITO == "si") {
-		var blob = JSON.stringify(this.cestaProductos);		
-		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
-		var ref = this;
-		$.ajax({
-			type : 'POST', 
-			url : urlService, 
-			cache: false,  		
-			data:{ 				
-				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
-				precioTotal: Number(this.totalCesta),	
-				cestaCompra:blob,			
-			}, 		
-			dataType: "json",								
-			success: function(data){
-				//alert(responseText);
-					var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
-					el.style.display = 'none'; //damos un atributo display:none que oculta el div
-					var el = document.getElementById('pedidoFinalizado'); 			
-					el.style.display = 'block'; 
-					var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
-					el.style.display = 'none';
-					ref.cestaProductos.splice(0,ref.cestaProductos.length);	
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert("eerrores durante la insercion");		
-			}			
-		});			
-	}else if (paypalApp.EXITO == "no") {
-		//alert("cancel");
-		var ref = this;
-		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
-		el.style.display = 'none'; //damos un atributo display:none que oculta el div
-		var el = document.getElementById('pedidoFinalizado'); 			
-		el.innerHTML ="Pedido Cancelado";
-		el.style.display = 'block'; 
-		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
-		el.style.display = 'none';
-		ref.cestaProductos.splice(0,ref.cestaProductos.length);	
-	}*/
-	alert("hola despues:");		
+	var ref = this;		
 	ref.cestaProductos.splice(0,ref.cestaProductos.length);	
 	ev.preventDefault();
 	//alert("pago realizado corre2");
