@@ -60,6 +60,7 @@ var paypalApp =
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
 		var content = JSON.stringify(payment);
 	  alert ("Hola cc"+cestaDeCompra); 
+	  alert ("Hola cesti"+this.cestita); 
 		var blob = JSON.stringify(cestaDeCompra);
 		 alert ("Hola"+blob); 
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
