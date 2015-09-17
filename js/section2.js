@@ -148,7 +148,7 @@ Section2.prototype.clickBtn = function(ev)
 {	
 	paypalApp.pay(Number(this.totalCesta));			
 	//alert("HOLA");
-	alert("hola"+paypalApp.EXITO);
+	alert("hola antes:"+paypalApp.EXITO);
 	if (paypalApp.EXITO == "si") {
 		var blob = JSON.stringify(this.cestaProductos);
 		/* alert ("Hola"+blob); */
@@ -190,7 +190,7 @@ Section2.prototype.clickBtn = function(ev)
 		el.style.display = 'none';
 		ref.cestaProductos.splice(0,ref.cestaProductos.length);	
 	}
-			
+	alert("hola despues:"+paypalApp.EXITO);		
 	ev.preventDefault();
 	//alert("pago realizado corre2");
 }
