@@ -34,6 +34,7 @@ var paypalApp =
     PAYPAL_CURRENCY_CODE:"EUR",
     PAYPAL_LANGUAGE:"es",
     PAYPAL_TYPE_INTENT:"Sale",
+	EXITO:"false",
 	
 	
    // paypalApplication Constructor
@@ -55,7 +56,7 @@ var paypalApp =
 		//alert("payment success: " + JSON.stringify(payment, null, 4));	
 
 		var content = JSON.stringify(payment);	 
-	return "si";
+		paypalApp.EXITO = "si";
    },
 
    onAuthorizationCallback : function(authorization) 
@@ -139,8 +140,10 @@ var paypalApp =
    {	  
 	  var payment = paypalApp.createPayment(paypalAmount);	
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);
-
-	  //return "no";
+	  if (paypalApp.EXITO == "no")
+			return "no";
+		else 
+		  return "si";
    },
 
 
@@ -156,7 +159,7 @@ var paypalApp =
 		el.style.display = 'block'; 
 		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none';
-		return "no";
+		paypalApp.EXITO = "si";
 		   
    }
 };

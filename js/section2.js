@@ -147,7 +147,7 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 Section2.prototype.clickBtn = function(ev)
 {	
 	var ref = this;		
-	alert(" cesta antes llamada"+ref.cestaProductos);
+	//alert(" cesta antes llamada"+ref.cestaProductos);
 	var dime = paypalApp.pay(Number(ref.totalCesta));		
 alert ("hola: "+dime);
 	var blob = JSON.stringify(ref.cestaProductos);
