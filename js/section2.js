@@ -157,15 +157,6 @@ Section2.prototype.clickBtn = function(ev)
 	var soyYo = document.getElementById('pedidoFinalizado').innerHTML; 
 	var miStrin = soyYo.toString();
 	
-	alert("soy yo String:"+ miStrin);	
-	alert("contiene");	
-	alert (miStrin.indexOf('correctamente'));
-	var pp = "hola";
-	alert("contiene Hola:");	
-	alert (miStrin.indexOf('ho'));	
-	alert("jj"+ soyYo.toString().indexOf("correctamente") );
-	alert(soyYo == "Su pedido ha sido tramitado correctamente.");	
-	
 	if (miStrin.indexOf('correctamente') > -1) {
 		$.ajax({
 			type : 'POST', 
