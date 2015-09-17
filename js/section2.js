@@ -155,8 +155,15 @@ Section2.prototype.clickBtn = function(ev)
 	var ref = this;			
 	var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 	var soyYo = document.getElementById('pedidoFinalizado').innerHTML; 
-	alert("soy yo:"+ soyYo);	
-	alert("jj"+ soyYo.toString().indexOf("correctamente") > -1);
+	var miStrin = soyYo.toString();
+	alert("soy yo String:"+ miStrin);	
+	alert("contiene");	
+	alert (miStrin.indexOf('ha'));
+	var pp = "hola";
+	alert("contiene Hola:");	
+	alert (miStrin.indexOf('ho'));
+	
+	alert("jj"+ soyYo.toString().indexOf("correctamente") );
 	alert(soyYo == "Su pedido ha sido tramitado correctamente.");	
 	if (soyYo == "Su pedido ha sido tramitado correctamente.") {
 		$.ajax({
