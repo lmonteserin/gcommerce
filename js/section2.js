@@ -146,6 +146,7 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {
+	alert("HOLA");
 	paypalApp.pay(Number(this.totalCesta));			
 	//alert("HOLA");
 	alert("hola"+paypalApp.EXITO);
