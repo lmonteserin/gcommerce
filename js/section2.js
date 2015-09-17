@@ -148,7 +148,7 @@ Section2.prototype.clickBtn = function(ev)
 {	
 	paypalApp.pay(Number(this.totalCesta));			
 	//alert("HOLA");
-	//alert("hola"+paypalApp.EXITO);
+	alert("hola"+paypalApp.EXITO);
 	if (paypalApp.EXITO == "si") {
 		var blob = JSON.stringify(this.cestaProductos);
 		/* alert ("Hola"+blob); */
