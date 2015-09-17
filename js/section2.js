@@ -146,12 +146,12 @@ Section2.prototype.onDataError = function  (jqXHR, textStatus, errorThrown)
 
 Section2.prototype.clickBtn = function(ev)
 {	
-	var exitoso = paypalApp.pay(Number(this.totalCesta));			
+	var exitoso = paypalApp.pay(Number(this.totalCesta), this.cestaProductos);			
 	alert("HOLA");
-	alert("hola antes:"+exitoso);
-	if (paypalApp.EXITO == "si") {
-		var blob = JSON.stringify(this.cestaProductos);
-		/* alert ("Hola"+blob); */
+	var ref = this;
+	
+	/*if (paypalApp.EXITO == "si") {
+		var blob = JSON.stringify(this.cestaProductos);		
 		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 		var ref = this;
 		$.ajax({
@@ -189,8 +189,9 @@ Section2.prototype.clickBtn = function(ev)
 		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
 		el.style.display = 'none';
 		ref.cestaProductos.splice(0,ref.cestaProductos.length);	
-	}
-	alert("hola despues:"+paypalApp.EXITO);		
+	}*/
+	alert("hola despues:");		
+	ref.cestaProductos.splice(0,ref.cestaProductos.length);	
 	ev.preventDefault();
 	//alert("pago realizado corre2");
 }

@@ -17,7 +17,8 @@
 * under the License.
 */
 
-
+var cestaCompra;
+var importeTotal;
 
 
 var paypalApp =
@@ -38,8 +39,6 @@ var paypalApp =
     PAYPAL_CURRENCY_CODE:"EUR",
     PAYPAL_LANGUAGE:"es",
     PAYPAL_TYPE_INTENT:"Sale",
-	EXITO:"no",
-
 	
 	
    // paypalApplication Constructor
@@ -58,19 +57,36 @@ var paypalApp =
 
    onSuccesfulPayment : function(payment) 
    {
-     //alert("payment success: " + JSON.stringify(payment, null, 4));
-	 paypalApp.EXITO = "si";
-     var content = JSON.stringify(payment);
+		//alert("payment success: " + JSON.stringify(payment, null, 4));	
+		var content = JSON.stringify(payment);
 	 
+		var blob = JSON.stringify(cestaCompra);
+		/* alert ("Hola"+blob); */
+		var urlService = 'http://1-dot-webgcommerceue.appspot.com/altaPedido';   
 		var ref = this;
-		var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
-		el.style.display = 'none'; //damos un atributo display:none que oculta el div
-		var el = document.getElementById('pedidoFinalizado'); 			
-		el.innerHTML ="mi culo";
-		el.style.display = 'block'; 
-		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
-		el.style.display = 'none';
-		ref.cestaProductos.splice(0,ref.cestaProductos.length);	
+		$.ajax({
+			type : 'POST', 
+			url : urlService, 
+			cache: false,  		
+			data:{ 				
+				idComercioUsuario: window.localStorage.getItem("idComercioUsuario"),
+				precioTotal: importeTotal,	
+				cestaCompra:blob,			
+			}, 		
+			dataType: "json",								
+			success: function(data){
+				//alert(responseText);
+					var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
+					el.style.display = 'none'; //damos un atributo display:none que oculta el div
+					var el = document.getElementById('pedidoFinalizado'); 			
+					el.style.display = 'block'; 
+					var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
+					el.style.display = 'none';					
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert("Error insertando el pedido");		
+			}			
+		});		
    },
 
    onAuthorizationCallback : function(authorization) 
@@ -150,18 +166,28 @@ var paypalApp =
 
 
 
-   pay : function(paypalAmount) 
+   pay : function(paypalAmount, cesta) 
    {
+	  cestaCompra = cesta;
+	  importeTotal = paypalAmount;
 	  var payment = paypalApp.createPayment(paypalAmount);		
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);   
-	  return  paypalApp.EXITO;
    },
 
 
    onUserCanceled : function(result) 
    {
-	   paypalApp.EXITO = "no";
+	   //paypalApp.EXITO = "no";
 	   //alert("onUserCanceled: " + result);
+	    var ref = this;
+	    var el = document.getElementById('divfuera'); //se define la variable "el" igual a nuestro div
+	 	el.style.display = 'none'; //damos un atributo display:none que oculta el div
+		var el = document.getElementById('pedidoFinalizado'); 			
+		el.innerHTML ="Pedido Cancelado";
+		el.style.display = 'block'; 
+		var el = document.getElementById('cestaVacia'); //se define la variable "el" igual a nuestro div
+		el.style.display = 'none';
+		   
    }
 };
 
