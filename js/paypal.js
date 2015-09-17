@@ -148,7 +148,7 @@ var paypalApp =
    {	  
 	  var payment = paypalApp.createPayment(paypalAmount);	
       PayPalMobile.renderSinglePaymentUI(payment, paypalApp.onSuccesfulPayment, paypalApp.onUserCanceled);
-	  return payment;
+	  return JSON.stringify(payment, null, 4);
    },
 
 
